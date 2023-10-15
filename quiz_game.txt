@@ -1,0 +1,157 @@
+import random
+data = {}
+
+def registration():
+    user_name = input("Enter your name : ")
+    roll_no = int(input("Enter your roll number : "))
+    password = input("Enter your password : ")
+    data[user_name] = password
+    data[roll_no] = password 
+    print("Registration successful...")
+
+def login():
+    user_name = input("Enter your name : ")
+    password = input("Enter your password : ")
+    data[user_name] = password
+    print("You are logged in ...")
+
+def quiz():
+    user_name = input("Enter your name : ")
+    print("Hello "+ user_name + " Welcome to the quiz game..." )
+    
+    while True:
+        print("Python")
+        print("Java")
+        print("C++")
+        
+        lang = input("Choose one language..")
+        if lang == 'python'.lower():
+            print("Hi "+user_name + "Welcome in python quiz")
+        elif lang == 'java'.lower():
+            print("Hi "+user_name + "Welcome in java quiz")
+        elif lang == 'c++'.lower():
+            print("Hi "+ user_name + "Welcome in C++ quiz")
+        else:
+            break
+
+        def game():
+            questions = [
+
+                {
+        "question": "What is the output of the following code?\nprint(2 + 2 * 3 - 4 / 2)",
+        "options": ["5", "8", "6", "7"],
+        "answer": "7"
+                },
+
+                {
+        "question": "Which of the following is an immutable data type in Python?",
+        "options": ["List", "Dictionary", "Set", "Tuple"],
+        "answer": "Tuple"
+               },
+
+               {
+        "question": "What will be the output of the following code?\nprint('hello'[::-1])",
+        "options": ["hello", "olleh", "llo", "None of the above"],
+        "answer": "olleh"
+              },
+
+              {
+        "question": "Which of the following is used to add a new key-value pair to a dictionary in Python?",
+        "options": ["insert()", "add()", "update()", "None of the above"],
+        "answer": "update()"
+              },
+
+              {
+        "question": "What is the output of the following code?\nprint(3 * 3 ** 3)",
+        "options": ["9", "27", "81", "729"],
+        "answer": "81"
+             },
+
+             {
+        "question": "What does the range() function in Python return?",
+        "options": ["List", "Tuple", "Dictionary", "Immutable set"],
+        "answer": "Immutable set"
+            },
+
+            {
+        "question": "What will be the output of the following code snippet?\nx = 10\ny = 5\nif x > y:\n    print('x is greater than y')",
+        "options": ["x is greater than y", "10 is greater than 5", "No output", "Error"],
+        "answer": "x is greater than y"
+            },
+
+            {
+        "question": "What does the pop() method do in Python lists?",
+        "options": ["Appends an element to the end of the list", "Removes and returns the last element of the list", "Removes and returns the first element of the list", "Sorts the list in ascending order"],
+        "answer": "Removes and returns the last element of the list"
+            },
+
+            {
+        "question": "What is the purpose of the __init__ method in Python classes?",
+        "options": ["It is called when an object is created", "It is used to initialize all the data attributes of the class", "It is used to define the class methods", "None of the above"],
+        "answer": "It is used to initialize all the data attributes of the class"
+            },
+
+            {
+        "question": "Which of the following is not a valid way to open a file in Python?",
+        "options": ["open(\"file.txt\", \"r\")", "open(\"file.txt\", \"w\")", "open(\"file.txt\", \"execute\")", "open(\"file.txt\", \"a\")"],
+        "answer": "open(\"file.txt\", \"execute\")"
+            }
+
+        ]
+            random.shuffle(questions)
+
+            score = 0
+
+            for i, question in enumerate(questions, 1):
+              print(f"question {i}: {question['question']}")
+              for j, option in enumerate(question['options'], 1):
+                print(f"{j}. {option}")
+
+              while True:
+                    user_answer = int(input("Enter your option : "))
+
+                    if user_answer and 1 <= user_answer <= 4 :
+                        break
+                    else:
+                        print("Invalid input . Please enter a valid option number . ")
+
+              if question['options'][user_answer - 1] == question['answer']:
+                   print("Correct!")
+                   score += 1
+              else:
+                  print(f"Wrong! The correct answer is {question['answer']}.")
+            
+
+            print(f"You scored {score} out of {len(questions)}.")
+        
+            view_score(score,len(questions))
+
+            def view_score(score , total_questions):
+                print(f"you scored {score } out of {total_questions}")
+        
+        game()
+        
+
+while True:
+    print("1. Registration")               
+    print("2. Login")               
+    print("3. Attempt quiz")               
+    print("4. Exit")
+
+    choice = input("Choose an option.. ")
+
+    if choice == '1':
+        registration()
+    elif choice == '2':
+        login()
+    elif choice == '3':
+        quiz()
+    elif choice == '4':
+        break
+    else:
+        print("Invalid option please try again...")
+
+
+
+
+
